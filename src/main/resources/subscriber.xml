@@ -1,0 +1,49 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="interfaces.mappersXML.SubscriberMapper">
+    <resultMap id="subscriber" type="model.Subscriber">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+
+        <!--property - свойство в Subscriber -->
+        <!-- column - колонка в таблице Subscriber, по которой собственно и будет происходить связь с нужным тарифом-->
+        <!--javaType - описание типа, который у нас будет возвращаться-->
+        <!--ofType - а этим типом будет заполнен список (List)-->
+        <!-- interfaces.select - работа передается тарифному мапперу, который выполнит sql и замапит все согласно своим настройкам.-->
+        <!-- fetchType - Тип запроса-->
+        <association
+                property="tariff"
+                column="ref_tariff"
+                javaType="model.Tariff"
+                select="interfaces.mappersXML.TariffMapper.getTariffById"
+                fetchType="eager"/>
+        <collection
+                property="paymentList"
+                column="id"
+                javaType="List"
+                ofType="model.Payment"
+                select="interfaces.mappersXML.PaymentMapper.getPaymentsByIdSub"
+                fetchType="eager"/>
+    </resultMap>
+    <!--название метода-->
+    <select id="getSubscriberById" parameterType="java.lang.Integer" resultMap="subscriber">
+        <!--id - название метода-->
+        <!--parameterType - тип входящих параметров, может быть поистине разнообразным, начиная от Map и заканчивая EntityBean.-->
+        <!-- поле в фигурных скобках это параметр, который прилетел в метод.
+            Если это Map — то {имя} это ключ к переменной.
+            Если в метод передаем EntityBean то {имя} — это название переменной данного bean.-->
+        select * from subscriber where id = #{id}
+    </select>
+    <select id="getSubscribers" resultMap="subscriber">
+        select * from subscriber
+    </select>
+
+    <insert id="insertSubscriber" useGeneratedKeys="true" keyProperty="id" parameterType="model.Subscriber">
+        INSERT INTO subscriber (name, ref_tariff) VALUES (#{name}, #{tariffID})
+    </insert>
+    <update id="updateSubscriber" parameterType="model.Subscriber">
+        update subscriber
+          set name = #{name},
+              ref_tariff = #{tariffID}
+        where id = #{id}
+    </update>
+</mapper>

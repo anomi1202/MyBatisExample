@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SQLExampleTest.iml" filepath="$PROJECT_DIR$/.idea/modules/SQLExampleTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SQLExampleTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SQLExampleTest_main.iml" group="SQLExampleTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SQLExampleTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SQLExampleTest_test.iml" group="SQLExampleTest" />
+    </modules>
+  </component>
+</project>

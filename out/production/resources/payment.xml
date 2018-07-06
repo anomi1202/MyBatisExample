@@ -1,0 +1,31 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="interfaces.mappersXML.PaymentMapper">
+    <resultMap id="payment" type="model.Payment">
+        <id property="id" column="id"/>
+        <result property="summa" column="summa"/>
+        <result property="subscriberID" column="ref_subscriber"/>
+    </resultMap>
+
+    <select id="getPaymentsByIdSub" parameterType="java.lang.Integer" resultMap="payment">
+        <!--id - название метода-->
+        <!--parameterType - тип входящих параметров, может быть поистине разнообразным, начиная от Map и заканчивая EntityBean.-->
+        <!-- поле в фигурных скобках это параметр, который прилетел в метод.
+            Если это Map — то {имя} это ключ к переменной.
+            Если в метод передаем EntityBean то {имя} — это название переменной данного bean.-->
+        select * from payments where ref_subscriber = #{subscriberId}
+    </select>
+    <insert id="insertForSubsID" useGeneratedKeys="true" keyProperty="id" parameterType="model.Payment">
+        INSERT INTO payments (ref_subscriber, summa) VALUES (#{subscriberID}, #{summa})
+    </insert>
+    <update id="updatePaymentForSubscriber" parameterType="model.Payment">
+        update payments
+            set summa = #{summa}
+        where ref_subscriber = #{subscriberID}
+    </update>
+    <delete id="deleteByID" parameterType="java.lang.Long">
+        DELETE from payments where id = #{id}
+    </delete>
+    <delete id="deletePayment" parameterType="model.Payment">
+        DELETE from payments where id = #{id}
+    </delete>
+</mapper>
