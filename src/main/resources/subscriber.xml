@@ -36,6 +36,9 @@
     <select id="getSubscribers" resultMap="subscriber">
         select * from subscriber
     </select>
+    <select id="getCountSubscribers" resultType="java.lang.Integer">
+        select count(*) as COUNT from subscriber
+    </select>
 
     <insert id="insertSubscriber" useGeneratedKeys="true" keyProperty="id" parameterType="model.Subscriber">
         INSERT INTO subscriber (name, ref_tariff) VALUES (#{name}, #{tariffID})

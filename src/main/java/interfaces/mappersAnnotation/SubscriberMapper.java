@@ -27,6 +27,10 @@ public interface SubscriberMapper {
     })
     List<Subscriber> getSubscribers();
 
+    @Select("select count(*) as COUNT from subscriber")
+    @Results(value = @Result(column = "COUNT", javaType = Integer.class))
+    Integer getCountSubscribers();
+
     @Insert({"INSERT INTO subscriber (name, ref_tariff) " +
             "VALUES (#{name}, #{tariffID})",})
     @Options(useGeneratedKeys = true, keyProperty = "id")

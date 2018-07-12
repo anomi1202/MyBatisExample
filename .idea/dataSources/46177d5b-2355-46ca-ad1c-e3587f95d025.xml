@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="SKIP">
+  <database-model serializer="dbm" rdbms="DB2" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="ADB"/>
+    <schema id="3" parent="1" name="CENTDB"/>
+    <schema id="4" parent="1" name="CLSDB"/>
+    <schema id="5" parent="1" name="DOKIPA"/>
+    <schema id="6" parent="1" name="DOKIPMGR"/>
+    <schema id="7" parent="1" name="DSN8BQRY"/>
+    <schema id="8" parent="1" name="DSNRGCOL"/>
+    <schema id="9" parent="1" name="SECRLOG"/>
+    <schema id="10" parent="1" name="SPECPART"/>
+    <schema id="11" parent="1" name="SPUADM"/>
+    <schema id="12" parent="1" name="SPUADM1">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="13" parent="1" name="SPUAPI"/>
+    <schema id="14" parent="1" name="SPUCOPY"/>
+    <schema id="15" parent="1" name="SPUMGR"/>
+    <schema id="16" parent="1" name="SPUMST"/>
+    <schema id="17" parent="1" name="SPUTEMP"/>
+    <schema id="18" parent="1" name="SYSIBM"/>
+    <schema id="19" parent="1" name="SYSIBMTS"/>
+    <schema id="20" parent="1" name="SYSTOOLS"/>
+    <schema id="21" parent="1" name="USPN"/>
+    <schema id="22" parent="1" name="USPNADM"/>
+    <schema id="23" parent="1" name="USPNAPP"/>
+  </database-model>
+</dataSource>

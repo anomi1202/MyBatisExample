@@ -2,8 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--ссылка на файл со свойствами(ссылка на СУБД, логин, пароль и тп.)-->
-    <properties resource="config.properties">
-    </properties>
+    <properties resource="config.properties"/>
 
     <!--&lt;!&ndash;в данном блоке можно настроить много параметров. Полный список параметров http://mybatis.github.io/mybatis-3/configuration.html#settings&ndash;&gt;-->
     <!--<settings>-->

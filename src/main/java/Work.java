@@ -33,27 +33,12 @@ public class Work {
     public static void main(String[] args) throws IOException {
         Work work = new Work();
         try {
-            int id = 2;
+            int countXML = work.getCountSubscribersXML();
+            int countAnnotation = work.getCountSubscribersAnnotation();
 
-            Subscriber subscriberById = work.subscriberMapperAnnotation.getSubscriberById(id);
-            System.out.println(subscriberById);
-
-            work.insertPaymentXML(subscriberById);
-            subscriberById = work.subscriberMapperAnnotation.getSubscriberById(id);
-            work.insertPaymentAnnotation(subscriberById);
-            subscriberById = work.subscriberMapperAnnotation.getSubscriberById(id);
-            System.out.println(subscriberById);
-
-            work.deletePaymentByIDAnnotation(subscriberById);
-            subscriberById = work.subscriberMapperAnnotation.getSubscriberById(id);
-            System.out.println(subscriberById);
-
-            work.deletePaymentAnnotation(subscriberById);
-            System.out.println(work.subscriberMapperAnnotation.getSubscriberById(id));
+            System.out.println(countXML);
+            System.out.println(countAnnotation);
         } finally {
-            work.sqlSessionXML.rollback();
-            work.sqlSessionAnnotation.rollback();
-
             work.sqlSessionXML.commit();
             work.sqlSessionXML.close();
 
@@ -237,5 +222,12 @@ public class Work {
         sqlSessionXML.rollback();
         sqlSessionAnnotation.commit();
         sqlSessionAnnotation.rollback();
+    }
+
+    Integer getCountSubscribersXML(){
+        return subscriberMapperXML.getCountSubscribers();
+    }
+    Integer getCountSubscribersAnnotation(){
+        return subscriberMapperAnnotation.getCountSubscribers();
     }
 }
